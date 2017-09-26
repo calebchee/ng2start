@@ -1,0 +1,58 @@
+<form [formGroup]="detailsForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-group">
+            <label for="sel1">Title</label>
+            <select class="form-control" name="title" formControlName="title">
+                <option>Mr</option>
+                <option>Mrs</option>
+            </select>
+        </div>
+
+       <div class="form-group">
+            <label for="firstname">First Name</label> 
+            <input type="text" class="form-control" name="firstname" formControlName="firstname">
+            <div *ngIf="!detailsForm.controls['firstname'].hasError('required') && detailsForm.controls['firstname'].touched" class="alert alert-danger">
+                You must include a first name.
+            </div>      
+       </div>
+    
+       <div class="form-group">
+            <label for="lastname">Last Name</label> 
+            <input type="text" class="form-control" name="lastname" formControlName="lastname">
+       </div>
+       
+        <div class="form-group">                
+            <div class="radio">
+                <label class="radio-inline"><input type="radio" value="male" name="genderopt" formControlName="genderopt">Male</label>
+ 
+                 <label class="radio-inline"><input type="radio" value="female" name="genderopt" formControlName="genderopt">Female</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <p>
+                <input type="checkbox" formControlName="sendsms">Please send SMS to me
+            </p>     
+        </div>
+
+        <div formGroupName="address">
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" class="form-control" name="city" formControlName="city" >
+            </div>
+                 
+            <div class="form-group">
+                <label for="street">Street</label>
+                <input type="text" class="form-control" name="street" formControlName="street" >
+            </div>                 
+            <div class="form-group">
+                <label for="pincode">Post Code</label>
+                <input type="text" class="form-control" name="postcode" formControlName="postcode">
+            </div>
+        </div>
+
+
+       <div class="form-group">
+            <button type="submit" class="btn btn-lg btn-danger" [disabled]="!detailsForm.valid">Submit</button>
+            <button type="submit" class="btn btn-lg btn-success">Submit</button>
+       </div>
+
+</form>

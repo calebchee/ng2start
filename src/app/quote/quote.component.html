@@ -1,0 +1,42 @@
+<div class="panel">
+    <p> Unformatted date : {{toDate }} </p>
+    <p> Formatted date : {{toDate | date:'dd-MM-y'}} </p>
+    <p> Test Parent: {{count}} </p>
+            
+</div>
+<div class='panel panel-primary'>
+  <div class='panel-heading'>
+      <p>Quote Tester : Please start ASP.NET Core</p> 
+  </div>
+  <div class="well" *ngIf="promo">
+
+    <button type="button" (click)="getQuotes()" class="btn btn-lg btn-default">Get Quotes</button>
+    
+    <button type="button" (click)="getSingleQuote()" class="btn btn-lg btn-default">Get Quote By ID</button>
+    
+  </div> 
+  <div class='panel-body'>
+      <div class='table-responsive'>
+          <table class='table'>
+              <thead>
+                  <tr>
+                      <th>Plan</th>
+                      <th>Original Price</th>
+                      <th>Discounted Amount</th>
+                      <th>Promotion Price</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let quote of quotes;">
+                      <td>{{quote.planid}}</td>
+                      <td><s>{{quote.price}}</s></td>                      
+                      <td>{{quote.promodiscount}}</td>
+                      <td>{{quote.promoprice | currency:'AUD'}}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+
